@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGI Identity Provider</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SGI Identity Provider</h1>
+            <p class="subtitle">Demo SAML 2.0 Identity Provider for @sgi.example</p>
+        </header>
+
+        <div id="login-section" class="card">
+            <h2>Sign In</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="user@sgi.example" required>
+                    <small>Must be an @sgi.example email address</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Any password (demo mode)" required>
+                    <small>Demo mode: any password is accepted</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            <div id="login-error" class="error-message" style="display: none;"></div>
+        </div>
+
+        <div id="authenticated-section" class="card" style="display: none;">
+            <h2>Authenticated</h2>
+            <div id="user-info">
+                <p>Signed in as: <strong id="user-email"></strong></p>
+            </div>
+            <div class="form-group">
+                <label for="sp-acs-url">Service Provider ACS URL</label>
+                <input type="url" id="sp-acs-url" placeholder="https://sp.example.com/saml/acs">
+                <small>Enter the Assertion Consumer Service URL of your SP</small>
+            </div>
+            <div class="form-group">
+                <label for="sp-entity-id">Service Provider Entity ID</label>
+                <input type="text" id="sp-entity-id" placeholder="https://sp.example.com/metadata">
+                <small>Enter the Entity ID (Audience) of your SP</small>
+            </div>
+            <button id="generate-response" class="btn btn-primary">Generate SAML Response</button>
+            <button id="logout" class="btn btn-secondary">Sign Out</button>
+        </div>
+
+        <div id="saml-response-section" class="card" style="display: none;">
+            <h2>SAML Response</h2>
+            <p>Copy this response or use the auto-submit form below:</p>
+            <div class="form-group">
+                <label>Base64-Encoded SAML Response</label>
+                <textarea id="saml-response-output" readonly rows="6"></textarea>
+                <button id="copy-response" class="btn btn-secondary">Copy to Clipboard</button>
+            </div>
+            <div class="form-group">
+                <label>Auto-Submit to SP</label>
+                <form id="saml-post-form" method="POST" target="_blank">
+                    <input type="hidden" name="SAMLResponse" id="saml-response-hidden">
+                    <input type="hidden" name="RelayState" value="">
+                    <button type="submit" class="btn btn-primary">POST to Service Provider</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>IdP Information</h2>
+            <dl>
+                <dt>Entity ID / Issuer</dt>
+                <dd id="idp-entity-id"></dd>
+
+                <dt>SSO URL (Redirect)</dt>
+                <dd id="idp-sso-url"></dd>
+
+                <dt>Metadata URL</dt>
+                <dd><a id="idp-metadata-url" href="metadata.xml" target="_blank"></a></dd>
+            </dl>
+            <a href="metadata.xml" class="btn btn-secondary" download>Download IdP Metadata</a>
+        </div>
+
+        <div class="card">
+            <h2>Test Users</h2>
+            <p>The following demo users are available (any password works):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>admin@sgi.example</td>
+                        <td>Alice Admin</td>
+                        <td>admin</td>
+                    </tr>
+                    <tr>
+                        <td>bob@sgi.example</td>
+                        <td>Bob Builder</td>
+                        <td>developer</td>
+                    </tr>
+                    <tr>
+                        <td>carol@sgi.example</td>
+                        <td>Carol Chen</td>
+                        <td>manager</td>
+                    </tr>
+                    <tr>
+                        <td>dave@sgi.example</td>
+                        <td>Dave Davis</td>
+                        <td>user</td>
+                    </tr>
+                    <tr>
+                        <td>eve@sgi.example</td>
+                        <td>Eve Evans</td>
+                        <td>analyst</td>
+                    </tr>
+                    <tr>
+                        <td>frank@sgi.example</td>
+                        <td>Frank Foster</td>
+                        <td>guest</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p><strong>Warning:</strong> This is a demo IdP for testing purposes only. Do not use in production.</p>
+            <p>The private key is publicly visible and provides no real security.</p>
+        </footer>
+    </div>
+
+    <script src="js/crypto.js"></script>
+    <script src="js/saml.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

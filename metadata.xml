@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    entityID="https://jcraveiro.github.io/SGI-SAML-example/metadata.xml">
+
+    <md:IDPSSODescriptor WantAuthnRequestsSigned="false"
+        protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+
+        <md:KeyDescriptor use="signing">
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>MIIDXTCCAkWgAwIBAgIJAJC1Hk9VmwlnMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhTR0kgRGVtbyBJZGVudGl0eSBQcm92aWRlcjAeFw0yNDAxMDEwMDAwMDBaFw0zNDAxMDEwMDAwMDBaMEUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhTR0kgRGVtbyBJZGVudGl0eSBQcm92aWRlcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALujYZk9bkw9cBRqoco4IfxlXeBRkWHQmTifjPypPoP2pfHlXYt0vccbAetjgzx/nDpnwTs1aTRtbd/2bwrdnlLwfvPkXVbYnpP0XRfdDwbsfVjlXZThdHoT0PwLQHsDVn9WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9Vn1WfVZ9VkCAwEAAaNQME4wHQYDVR0OBBYEFBHpXY6tD1ND6QOdP3BRmQSsBYzdMB8GA1UdIwQYMBaAFBHpXY6tD1ND6QOdP3BRmQSsBYzdMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADemoSignatureExampleOnlyNotRealSignatureDataHereForDemoPurposesOnlyDoNotUse123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789PlusSignatureExample==</ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </md:KeyDescriptor>
+
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat>
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+
+        <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+            Location="https://jcraveiro.github.io/SGI-SAML-example/index.html"/>
+        <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+            Location="https://jcraveiro.github.io/SGI-SAML-example/index.html"/>
+
+    </md:IDPSSODescriptor>
+
+    <md:Organization>
+        <md:OrganizationName xml:lang="en">SGI Demo Identity Provider</md:OrganizationName>
+        <md:OrganizationDisplayName xml:lang="en">SGI Demo IdP</md:OrganizationDisplayName>
+        <md:OrganizationURL xml:lang="en">https://jcraveiro.github.io/SGI-SAML-example/</md:OrganizationURL>
+    </md:Organization>
+
+    <md:ContactPerson contactType="technical">
+        <md:GivenName>Demo</md:GivenName>
+        <md:SurName>Administrator</md:SurName>
+        <md:EmailAddress>admin@sgi.example</md:EmailAddress>
+    </md:ContactPerson>
+
+</md:EntityDescriptor>
