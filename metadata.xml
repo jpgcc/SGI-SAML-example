@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
     xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-    entityID="https://jcraveiro.github.io/SGI-SAML-example/metadata.xml">
+    entityID="https://jpgcc.github.io/SGI-SAML-example/metadata.xml">
 
     <md:IDPSSODescriptor WantAuthnRequestsSigned="false"
         protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -19,16 +19,16 @@
         <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
 
         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-            Location="https://jcraveiro.github.io/SGI-SAML-example/index.html"/>
+            Location="https://jpgcc.github.io/SGI-SAML-example/index.html"/>
         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-            Location="https://jcraveiro.github.io/SGI-SAML-example/index.html"/>
+            Location="https://jpgcc.github.io/SGI-SAML-example/index.html"/>
 
     </md:IDPSSODescriptor>
 
     <md:Organization>
         <md:OrganizationName xml:lang="en">SGI Demo Identity Provider</md:OrganizationName>
         <md:OrganizationDisplayName xml:lang="en">SGI Demo IdP</md:OrganizationDisplayName>
-        <md:OrganizationURL xml:lang="en">https://jcraveiro.github.io/SGI-SAML-example/</md:OrganizationURL>
+        <md:OrganizationURL xml:lang="en">https://jpgcc.github.io/SGI-SAML-example/</md:OrganizationURL>
     </md:Organization>
 
     <md:ContactPerson contactType="technical">

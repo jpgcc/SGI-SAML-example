@@ -2,7 +2,7 @@
 
 A client-side SAML 2.0 Identity Provider for testing and educational purposes. This demo IdP manages identities with `@sgi.example` email addresses.
 
-**Live Demo:** https://jcraveiro.github.io/SGI-SAML-example/
+**Live Demo:** https://jpgcc.github.io/SGI-SAML-example/
 
 > **Warning:** This is a demo IdP for testing purposes only. The private keys are publicly visible and provide no real security. Do not use in production environments.
 
@@ -36,10 +36,10 @@ Use these values when configuring your Service Provider:
 
 | Setting | Value |
 |---------|-------|
-| **Entity ID / Issuer** | `https://jcraveiro.github.io/SGI-SAML-example/metadata.xml` |
-| **SSO URL (HTTP-Redirect)** | `https://jcraveiro.github.io/SGI-SAML-example/index.html` |
-| **SSO URL (HTTP-POST)** | `https://jcraveiro.github.io/SGI-SAML-example/index.html` |
-| **Metadata URL** | `https://jcraveiro.github.io/SGI-SAML-example/metadata.xml` |
+| **Entity ID / Issuer** | `https://jpgcc.github.io/SGI-SAML-example/metadata.xml` |
+| **SSO URL (HTTP-Redirect)** | `https://jpgcc.github.io/SGI-SAML-example/index.html` |
+| **SSO URL (HTTP-POST)** | `https://jpgcc.github.io/SGI-SAML-example/index.html` |
+| **Metadata URL** | `https://jpgcc.github.io/SGI-SAML-example/metadata.xml` |
 | **NameID Format** | `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` |
 | **Signature Algorithm** | RSA-SHA256 |
 
@@ -50,16 +50,16 @@ Use these values when configuring your Service Provider:
 Most Service Providers allow you to import IdP metadata directly. Download or point to:
 
 ```
-https://jcraveiro.github.io/SGI-SAML-example/metadata.xml
+https://jpgcc.github.io/SGI-SAML-example/metadata.xml
 ```
 
 ### Step 2: Manual Configuration (if metadata import unavailable)
 
 If your SP doesn't support metadata import, configure these settings manually:
 
-1. **IdP Entity ID:** `https://jcraveiro.github.io/SGI-SAML-example/metadata.xml`
+1. **IdP Entity ID:** `https://jpgcc.github.io/SGI-SAML-example/metadata.xml`
 
-2. **IdP SSO URL:** `https://jcraveiro.github.io/SGI-SAML-example/index.html`
+2. **IdP SSO URL:** `https://jpgcc.github.io/SGI-SAML-example/index.html`
 
 3. **IdP Certificate:** Download from the metadata or copy from `js/crypto.js`
 
@@ -95,7 +95,7 @@ When using the demo IdP, you'll need to enter:
 
 ### IdP-Initiated Flow
 
-1. Visit https://jcraveiro.github.io/SGI-SAML-example/
+1. Visit https://jpgcc.github.io/SGI-SAML-example/
 2. Sign in with a test user (e.g., `admin@sgi.example`, any password)
 3. Enter your SP's ACS URL and Entity ID
 4. Click "Generate SAML Response"
@@ -106,7 +106,7 @@ When using the demo IdP, you'll need to enter:
 The IdP accepts SAMLRequest parameters via URL query string:
 
 ```
-https://jcraveiro.github.io/SGI-SAML-example/index.html?SAMLRequest=<base64-encoded-request>&RelayState=<optional-relay-state>
+https://jpgcc.github.io/SGI-SAML-example/index.html?SAMLRequest=<base64-encoded-request>&RelayState=<optional-relay-state>
 ```
 
 The IdP will attempt to parse the request and pre-fill the ACS URL and Entity ID.
@@ -117,8 +117,8 @@ The IdP will attempt to parse the request and pre-fill the ACS URL and Entity ID
 
 ```yaml
 idp:
-  entity_id: https://jcraveiro.github.io/SGI-SAML-example/metadata.xml
-  sso_url: https://jcraveiro.github.io/SGI-SAML-example/index.html
+  entity_id: https://jpgcc.github.io/SGI-SAML-example/metadata.xml
+  sso_url: https://jpgcc.github.io/SGI-SAML-example/index.html
   certificate: |
     MIIDXTCCAkWgAwIBAgIJAJC1Hk9VmwlnMA0GCSqGSIb3DQEBCwUAMEUx...
   name_id_format: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
@@ -128,7 +128,7 @@ idp:
 
 ```javascript
 const samlStrategy = new SamlStrategy({
-  entryPoint: 'https://jcraveiro.github.io/SGI-SAML-example/index.html',
+  entryPoint: 'https://jpgcc.github.io/SGI-SAML-example/index.html',
   issuer: 'your-sp-entity-id',
   cert: fs.readFileSync('./idp-certificate.pem', 'utf8'),
   // Note: This demo IdP uses unsigned responses in practice
@@ -143,7 +143,7 @@ const samlStrategy = new SamlStrategy({
 <bean id="idpMetadata" class="org.springframework.security.saml.metadata.ExtendedMetadataDelegate">
     <constructor-arg>
         <bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
-            <constructor-arg value="https://jcraveiro.github.io/SGI-SAML-example/metadata.xml"/>
+            <constructor-arg value="https://jpgcc.github.io/SGI-SAML-example/metadata.xml"/>
             <constructor-arg value="5000"/>
         </bean>
     </constructor-arg>
